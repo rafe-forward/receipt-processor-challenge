@@ -146,7 +146,7 @@ router.get("/:id/points", (req,res) => {
         res.json({points});
 
     } catch (error){
-        console.error("No receipt found for that ID.", error.message);
+        console.error("The receipt is invalid.", error.message);
         res.status(500).json({error: error.message});
     }
 })
