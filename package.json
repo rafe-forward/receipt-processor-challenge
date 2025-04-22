@@ -1,0 +1,27 @@
+{
+  "name": "receipt-processor-challenge",
+  "version": "1.0.0",
+  "description": "Fetch Take Home assessment",
+  "homepage": "https://github.com/fetch-rewards/receipt-processor-challenge#readme",
+  "bugs": {
+    "url": "https://github.com/fetch-rewards/receipt-processor-challenge/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fetch-rewards/receipt-processor-challenge.git"
+  },
+  "license": "ISC",
+  "author": "Raphael Forward",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "uuid": "^11.1.0"
+  }
+}
