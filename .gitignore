@@ -28,7 +28,6 @@ Thumbs.db
 
 # Docker stuff
 .dockerignore
-Dockerfile
 docker-compose.yml
 
 # Editor folders

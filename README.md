@@ -19,17 +19,13 @@
 ### Step 1:
     In the challenge's root directory run:
 
-    ```bash
     docker build -t receipt-processor-challenge .
-    ```
 
 
 ### Step 2:
     Start the service by running:
 
-    ```bash
     docker run -p 3000:3000 receipt-processor-challenge
-    ``` 
 
     Now you can access the api through localhost:3000
 
@@ -39,7 +35,6 @@
 
     Submit a receipt:
 
-    ```bash
     curl -X POST http://localhost:3000/receipts/process \
     -H "Content-Type: application/json" \
     --data-raw "{
@@ -55,12 +50,9 @@
         ],
         \"total\": \"35.35\"
     }"
-    ```
 
 
 ### Step 4
     Now use the ID from the previous request
 
-    ```bash
     curl http://localhost:3000/receipts/{id}/points
-    ``` 
