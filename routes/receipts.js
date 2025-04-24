@@ -2,11 +2,11 @@ const express = require("express");
 const { v4: uuidv4 } = require("uuid");
 const router = express.Router();
 const { validateReceipt, validatePartialReceipt } = require("../utils/validation");
-const {calculatePoints} = require("../utils/pointCalcuation");
+const {calculatePoints} = require("../utils/pointCalculation");
 const processedReceipts = [];
 router.post("/process", (req, res) => {
     try {
-        //retrive items from req
+        //retrieve items from req
         const { retailer, purchaseDate, purchaseTime, total, items } = req.body;
 
         // validation based on yml
@@ -45,10 +45,10 @@ router.get("/:id/points", (req,res) => {
             return res.status(404).json({ error: "No receipt found for that ID." });
         }
 
-        //validate data retrived
+        //validate data retrieved
         validateReceipt(result);
 
-        //Caculate total points
+        //Calculate total points
         let points = calculatePoints(result);
         
         // Return sum of points
@@ -136,7 +136,7 @@ router.patch("/:id", (req,res) => {
         return res.json({message: "Receipt Updated successfully", data: processedReceipts[index]
         });
     } catch(error){
-        console.error("Error updaing receipt: ",error.message);
+        console.error("Error updating receipt: ",error.message);
         if (error.message.includes("invalid")){
             return res.status(400).json({error: error.message})
         }

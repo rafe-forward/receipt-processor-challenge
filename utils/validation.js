@@ -11,7 +11,7 @@ function validateReceipt(receipt){
     //Check if the items array is an array and > 0
     const itemsValid = Array.isArray(items) && items.length > 0;
 
-    //If one isnt valid, throw error
+    //If one isn't valid, throw error
     if (!retailerValid || !dateValid || !timeValid || !totalValid || !itemsValid) {
         throw new Error("Receipt is invalid")
     }
