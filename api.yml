@@ -56,6 +56,71 @@ paths:
                                         example: 100
                 404:
                     $ref: "#/components/responses/NotFound"
+    /receipts/{id}:
+        delete:
+            summary: Deletes the receipt that matches the ID
+            description: Deletes the receipt that matches the ID
+            parameters:
+                name: id
+                in: path
+                required: true
+                description: the ID of the receipt
+                schema:
+                    type: string
+                    pattern: "^\\S+$"
+            responses:
+                200:
+                    description: Confirmation of deletion
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    message:
+                                        type: string
+                                        example: "Receipt Deleted!"
+                404:
+                    $ref: "#/components/responses/NotFound"
+    /receipts:
+        get:
+            summary: Retrieves receipts with optional filtering
+            description: Returns a list of receipts. You can optionally filter by retailer name or purchase date
+            parameters:
+                -name: retailer
+                in: query
+                required: false
+                description: A case-insensitive substring match for the retailer name
+                schema:
+                    type: string
+                    pattern: "^[\\w\\s\\-&]+$"
+                    example: "Target"
+                -name: date
+                in: query
+                required: false
+                description: Exact match on purchase date (YYYY-MM-DD)
+                schema:
+                    type: string
+                    format: date
+                    example: "2025=02-01"
+            responses:
+                200:
+                    description: A list of receipts that match the query
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                count:
+                                    type: integer
+                                    example: 2
+                                data:
+                                    type: array
+                                    items: 
+                                        $ref: "#/components/schemas/Receipt"
+                400:
+                    $ref: "#/components/responses/BadRequest"
+                500:
+                    description: Internal error during retrieval
 components:
     schemas:
         Receipt:
